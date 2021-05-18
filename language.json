@@ -1,0 +1,36 @@
+
+  {
+      "en":{
+          "primer": "Home",
+          "segundo": "We",
+          "tercero": "Market",
+          "cuarto":  "Delivery zone",
+          "titulo1": "Category",
+          "quinto": "arrangements",
+          "sexto": "breakfast",
+          "septimo": "surprise box",
+          "octavo" : "chocolate bouquets",
+          "noveno" : "the last",
+          "titulo2" : "follow us",
+          "titulo3" : "language"
+        
+      },
+
+      "es":{
+        "primer": "Casa",
+        "segundo": "Nosotros",
+        "tercero": "Tienda",
+        "cuarto":  "Zona De Envios",
+        "titulo1": "Categorias",
+        "quinto": "Arreglos",
+        "sexto": "Desayunos",
+        "septimo": "Cajas Sorpresas",
+        "octavo" : "Ramos De Chocolate",
+        "noveno" : "Lo Ultimo",
+        "titulo2" : "Siguenos",
+        "titulo3" : "lenguaje"
+      
+
+      }
+  }
+ 

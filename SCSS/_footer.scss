@@ -1,0 +1,44 @@
+footer{
+	background-color:$color-fondo;
+}
+ul{
+	list-style-type: none;
+}
+h3{
+	@extend %fuenteComun;
+}
+
+.navegacionFooter{
+ 	display: flex; 
+	justify-content: space-between;
+}
+
+.subtituloMenu{
+	font-size: 35px;
+}
+.nav-footer{
+	font-family:$fuente-segundaria; 
+	color: black;
+	font-size:$fuente-medida;
+}
+
+.footer1 .footer2 .footer3 .footer4{
+	float: left;
+}
+
+.footer1{
+	margin-left: 5%;
+}
+.footer4{
+	margin-right: 10%;
+}
+ #img{
+ 	@include icon(40px,40px,5px)
+	margin-left:40px; 
+	
+ }
+
+ div ul li a:hover{
+	color: purple;
+	text-decoration: none;
+}

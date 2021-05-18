@@ -1,0 +1,17 @@
+%fuenteComun{
+	font-family:$fuente-principal;
+	color:$color-titulo;
+	
+}
+
+@mixin cambiarBorde($ancho,$color,$estilo){
+	border-width:$ancho;
+	border-color: $color;
+	border-style: $estilo;
+}
+
+@mixin icon($ancho,$largo,$margin){
+	width:$ancho;
+	height: $largo;
+	margin-top: $margin;
+}
