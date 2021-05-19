@@ -133,9 +133,45 @@ function validarFormulario(){
         $("#titulo2").html(data[lang].titulo2)
 
         $("#titulo3").html(data[lang].titulo3)
+   }
 
+   function BaseDeDatos() {
+      let productosBD = [];
+      $.ajax({
+          async: false,
+          global: false,
+          url: "/productos.json",
+          dataType: "json",
+          success: (data) => {
+              productosBD = data;
+          },
+          error: (error) => {
+              console.log('Error AJAX: ', error);
+          }
+      });
+      return productosBD;
+  }
+ 
+      const Productos = BaseDeDatos();
+      randerizarcategoria();
 
-        
+      function randerizarcategoria() {
+         let acumulador ='';
+         categoria.forEach(element =>{
+            acumulador += `<a class="dropdown-item" onclick'=filtrarProductos("${element}")'>${element}</a>`  
+
+         })
+         $("#arreglos", "cajas", "lo ultimo", "chocoramos", "desayunos").html(acumulador);
       
-      
-      } 
+      }
+      function filtrarProductos(cajas){
+         console.log(cajas)
+         Productos.filter(element=> element.categoria == categoria);
+         let acumulador = ``
+         productosFiltrados.forEach(
+            element => acumulador += `<div>${element.categoria} - ${element.class}</div>`
+         )
+         
+      }
+
+   $("root")
