@@ -6,13 +6,13 @@
           "tercero": "Market",
           "cuarto":  "Delivery zone",
           "titulo1": "Category",
-          "quinto": "arrangements",
-          "sexto": "breakfast",
-          "septimo": "surprise box",
-          "octavo" : "chocolate bouquets",
-          "noveno" : "the last",
-          "titulo2" : "follow us",
-          "titulo3" : "language"
+          "quinto": "Arrangements",
+          "sexto": "Breakfast",
+          "septimo": "Surprise box",
+          "octavo" : "Chocolate bouquets",
+          "noveno" : "The last",
+          "titulo2" : "Follow us",
+          "titulo3" : "Language"
         
       },
 
@@ -28,7 +28,7 @@
         "octavo" : "Ramos De Chocolate",
         "noveno" : "Lo Ultimo",
         "titulo2" : "Siguenos",
-        "titulo3" : "lenguaje"
+        "titulo3" : "Lenguaje"
       
 
       }
