@@ -57,13 +57,8 @@
 
 				<li class="nav-item dropdown"><br>
 						<a class="nav-link dropdown-toggle text-body" data-toggle="dropdown" href="html/tienda.html">Tienda</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="html/arreglos.html">Arreglos</a>
-								<a class="dropdown-item" href="html/desayunos.html">Desayunos</a>
-								<a class="dropdown-item" href="html/cajas.html">Cajas Sopresas</a>
-								<a class="dropdown-item" href="html/chocoramos.html">Ramos de Chocolates</a>
-								<a class="dropdown-item" href="html/loultimo.html">Lo Último</a>
-							</div>
+							<div class="dropdown-menu" id="categorias2">
+								
 				</li>
 
 				<li class="nav-item"><br>
@@ -103,7 +98,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link navPequeño text-dark" href="html/cajas.html">Cajas Sorpresas</a>
+							<a class="nav-link navPequeño text-dark" href="html/Regalos.html">Cajas Sorpresas</a>
 						</li>  
 
 						<li class="nav-item">
@@ -126,8 +121,12 @@
 	  		</nav>
        </div>  
 	</header>
-
+	<div id="alertBotin"></div>
 	<main>
+		<div class="items">
+		<div class="card-columns" style="width: 100%;" id="cardCajas" class="dropdown-item"></div> 
+		</div>
+		<div id=Ocultar3>
 		<div id="demo" class="carousel slide animate__animated animate__fadeInRight" data-ride="carousel">
 			<ul class="carousel-indicators">
 				<li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -154,48 +153,9 @@
 					<span class="carousel-control-next-icon"></span></a>
 		</div>
 
-			<div style="position: relative;"><h1 class="tituloIndex" id="tituloIndex"><hr>Dulce Fusion<hr></h1></div>
 			
-		<div class="contenedor">
-
-			<div class="hijo1 container"><a href="html/arreglos.html">
-				<div>
-					<img src="img/2.png" alt="imagen del main 1" class="imagen1">
-						<div class="row">
-							<div class="col text-center">
-								<a class="btn btn-outline-info btn-lg btn-default" id="boton" href="html/arreglos.html" role="button">Arreglos De Dulces</a>
-							</div>				
-						</div>
-				</div>
-			</div>
-
-			<div class="hijo2 container"><a href="html/chocoramos.html">
-				<div>
-					<img src="img/5.png" alt="imagen del main 2" class="imagen2">
-						<div class="row">
-							<div class="text-center col">
-								<a class="btn btn-outline-info btn-lg btn-default" id="boton"  href="html/chocoramos.html" role="button">Ramos de Chocolate</a>
-							</div>				
-						</div>
-				</div>
-			</div>
-
-			<div class="hijo3 container"><a href="html/desayunos.html">
-				<div>
-					<img src="img/6.png" alt="imagen del main 3" class="imagen3">
-						<div class="row">
-							<div class="col text-center">
-								<a class="btn btn-outline-info btn-lg btn-default" id="boton"  href="html/desayunos.html" role="button">Desayunos</a>
-							</div>				
-						</div>
-				</div>
-			</div>
-									
-			<div class="hijo4"><a href="html/envios.html">
-				<img src="img/7.png" alt="imagen del main 4" class="imagen4"></a>
-			</div>
-
-		</div>	
+			
+		
 
 		<div class="medidaPequeña"><br>
 			<h2 class="tituloIndex"><hr>Lo Ultimo<hr></h2>
@@ -240,7 +200,7 @@
 				<li class="page-item"><a class="page-link" href="javascript:void(0);">&raquo;</a></li>
 			</ul>
 		</div>
-	
+	</div>
 		<div class="imgBaja animate__animated animate__fadeInRight" >
 			<img src="img/cr27.jpg" alt="imagen main bajo" style="width: 100%; height: 500px;"> 
 		</div>
@@ -298,5 +258,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src='js/main.js'></script>
+	<script src="/carrito.js"></script>
 </body>
 </html>

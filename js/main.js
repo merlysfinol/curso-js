@@ -1,26 +1,8 @@
+
 let PRODUCTOS = [];
-const carrito = [];
 let acumuladorCard = ``;
-
-class productos {
-   titulo;
-   precio;
-   imagen;
-   categoria;
-
-   constructor(titulo, precio, imagen, categoria){
-      this.titulo = titulo;
-      this.precio = precio;
-      this.imagen = imagen;
-      this.categoria = categoria;
-   }
-   calcularStock(){
-      return stock > 0;
-   }
-   devolverValoresDelProducto(){
-      return this;
-   }
-}
+let storageValores = localStorage.storageCarrito;
+let carrito = [];
 
 function presentacion (nombre,apellido){
    nombre = prompt ("¿Cual es tu nombre?");
@@ -30,22 +12,6 @@ function presentacion (nombre,apellido){
    alert("¡Hola! " + nombreCompleto + " Bienvenid@ a la mejor pagina de regalos!");
 }
 // presentacion()
-
-function agregarProductoAlCarrito(precioDelProducto) {
-   localStorage.setItem("carrito",(carrito))
-   carrito.push(precioDelProducto);
-   console.log(carrito);
-   console.log(`tienes ${carrito.length} productos en tu carrito`);
-   $(`#msjCarrito`).html(`<p class="text-center alert alert-success" style= "font-family: 'Pacifico', cursive; font-size: 25px;">Se agrego al carrito</p>`);
-   $(`#msjCarrito`).fadeIn(2000,function(){
-      $(`#msjCarrito`).hide();
-   });
-   suma= 0;
-   carrito.forEach (function(carrito){
-      suma += carrito;
-   });
-   console.log(`el total de tu carrito es ${suma}`);
-}
 
 
 function validarFormulario(){
@@ -77,7 +43,6 @@ function mensaje (event){
 async function cambiaridioma(lang) {   
    let response = await fetch("/language.json");
    let data = await response.json();
-   console.log(data[lang]);
    $("#primer").html(data[lang].primer)
    $("#segundo").html(data[lang].segundo)
    $("#tercero").html(data[lang].tercero)
@@ -95,17 +60,22 @@ async function cambiaridioma(lang) {
    $("#titulo3").html(data[lang].titulo3)
 }
 
+function ocultar(){
+   document.getElementById('Ocultar3').style.display = 'none';
+   }
 
 const Categorias = ['arreglos', 'chocoramo', 'Desayunos', 'cajas', 'Lo ultimo'];
 
 function randerizarcategoria() {
    let acumulador ='';
    Categorias.forEach(element =>{
-      acumulador += `<a class="dropdown-item" onclick="filtrarProductos('${element}')">${element}</a>`  
+      acumulador += `<a class="dropdown-item" onclick="filtrarProductos('${element}'); ocultar()">${element}</a>`  
    })
+   
    $("#categorias2").html(acumulador);
 
 }
+
 
 function BaseDeDatos(){  
   return fetch('/productos.json').then(res => res.json());
@@ -113,22 +83,24 @@ function BaseDeDatos(){
 
 function filtrarProductos(categoria) {
    let acumulador = ``;
-   let productosFiltrados = PRODUCTOS.filter(elemento => elemento.categoria == categoria);
+   let productosFiltrados = PRODUCTOS.filter(elemento => elemento.categoria === categoria);
    productosFiltrados.forEach(
       element => {   acumulador += `
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center mt-5">
-         <div class="card mb-3">
-            <img src=${element.imagen} class="card-img-top propiedades-card" alt="${element.nombre}">
+      <div class="items">
+      <div class="card col-12 col-md-12 col-lg-12 animate__animated animate__slideInDown" id="medidaDiv">
+            <img src=${element.imagen} class="card-img-top propiedades-card card-image" alt="${element.nombre}">
             <div class="card-body">
                   <h6 class="card-title">${element.nombre}</h6>
                   <p class="card-text">CLP ${element.precio}</p>
-                  <button type="submit" class="btn btn-info" onclick="identificarId(${element.id})">Agregar al carrito</a>
+                  <button type="submit" class="btn btn-info addToCart" onclick="identificarId(${element.id})">Agregar al carrito</a>
             </div>
-         </div>
+      </div>
       </div>`;
    });
    $("#cardCajas").html(acumulador)
 } 
+
+
 
 // EMPIEZA MI APP
 async function init() {
@@ -137,8 +109,50 @@ async function init() {
 }
 init();
 
-// BaseDatos().then(productos => {
-//    PRODUCTOS = productos;
-//    console.log({PRODUCTOS})
-//    randerizarcategoria();
-// })
+
+// VALIDAR LOCAL STORAGE
+const validarLocalStorage = () => {
+   if(storageValores === undefined) {
+       carrito = [];
+   } else {
+       carrito = JSON.parse(storageValores);
+   }
+}
+
+
+validarLocalStorage();
+
+// IDENTIFICA ID DEL PRODUCTO Y AGREGA EL ID CARRITO
+function identificarId(identificaProductos) {
+   const productoBuscado = PRODUCTOS.find((producto) => producto.id === identificaProductos);
+   agregarAlCarrito(productoBuscado);
+   const alerta = document.getElementById('alertBotin');
+   alerta.innerHTML = 
+       `<div class="mt-3 alert alert-success" role="alert">
+           Su Producto Se Agrego Correctamente
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+           </button>
+       </div>`;
+}
+
+// VALIDAR SI EL PRODUCTO DEL CARRITO SE REPITE
+function validarProductoCarrito (identificaProductos) {
+   const producto = carrito.find((item) => item.id === identificaProductos);
+   return producto;
+}
+
+// AGREGAR AL CARRITO
+function agregarAlCarrito(producto) {
+   const productoCarrito = validarProductoCarrito(producto.id);
+   if (productoCarrito) {
+       productoCarrito.cantidadCompra += 1; 
+       localStorage.setItem('storageCarrito', JSON.stringify(carrito));
+   } else {
+       producto.cantidadCompra = 1;
+       carrito.push(producto);
+       localStorage.setItem('storageCarrito', JSON.stringify(carrito));
+   }
+}
+
+
